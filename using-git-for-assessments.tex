@@ -1,0 +1,168 @@
+\documentclass[12pt, a4paper, hidelinks]{scrartcl}
+
+  % Enables the use of colour.
+  \usepackage{xcolor}
+  % Syntax high-lighting for code. Requires Python's pygments.
+  \usepackage{minted}
+  % Enables the use of umlauts and other accents.
+  \usepackage[utf8]{inputenc}
+  % Diagrams.
+  \usepackage{tikz}
+  % Settings for captions, such as sideways captions.
+  \usepackage{caption}
+  % Symbols for units, like degrees and ohms.
+  \usepackage{gensymb}
+  % Latin modern fonts - better looking than the defaults.
+  \usepackage{lmodern}
+  % Allows for columns spanning multiple rows in tables.
+  \usepackage{multirow}
+  % Better looking tables, including nicer borders.
+  \usepackage{booktabs}
+  % More math symbols.
+  \usepackage{amssymb}
+  % More math fonts, like \mathbb.
+  \usepackage{amsfonts}
+  % More math layouts, equation arrays, etc.
+  \usepackage{amsmath}
+  % More theorem environments.
+  \usepackage{amsthm}
+  % More column formats for tables.
+  \usepackage{array}
+  % Adjust the sizes of box environments.
+  \usepackage{adjustbox}
+  % Better looking single quotes in verbatim and minted environments.
+  \usepackage{upquote}
+  % Better blank space decisions.
+  \usepackage{xspace}
+  % Better looking tikz trees.
+  \usepackage{forest}
+  % URLs.
+  \usepackage{hyperref}
+  % Plotting.
+  \usepackage{pgfplots}
+  % Changing headers and footers.
+  \usepackage{fancyhdr}
+  % Calculates the number of pages.
+  \usepackage{lastpage}
+  % Styling the abstract.
+  \usepackage{abstract}
+  
+  % Various tikz libraries.
+  % For drawing mind maps.
+  \usetikzlibrary{mindmap}
+  % For adding shadows.
+  \usetikzlibrary{shadows}
+  % Extra arrows tips.
+  \usetikzlibrary{arrows.meta}
+  % Old arrows.
+  \usetikzlibrary{arrows}
+  % Automata.
+  \usetikzlibrary{automata}
+  % For more positioning options.
+  \usetikzlibrary{positioning}
+  % Creating chains of nodes on a line.
+  \usetikzlibrary{chains}
+  % Fitting node to contain set of coordinates.
+  \usetikzlibrary{fit}
+  % Extra shapes for drawing.
+  \usetikzlibrary{shapes}
+  % For markings on paths.
+  \usetikzlibrary{decorations.markings}
+  % For advanced calculations.
+  \usetikzlibrary{calc}
+  
+  % GMIT colours.
+  \definecolor{gmitblue}{RGB}{20,134,225}
+  \definecolor{gmitred}{RGB}{220,20,60}
+  \definecolor{gmitgrey}{RGB}{67,67,67}
+
+  %%%%%% CHANGE
+  % Author.
+  \newcommand{\docauthor}{ian.mcloughlin@gmit.ie}
+  % Title.
+  \newcommand{\doctitle}{Using git for assessments}
+  %%%%%%
+
+  
+  % Abstract
+  \renewcommand{\abstractname}{}
+  \renewcommand{\absnamepos}{empty}
+
+  % Header and footer
+  \fancypagestyle{plain}{
+    \renewcommand{\headrulewidth}{0pt}
+    \lhead{}
+    \rhead{}
+    \cfoot{Page~\thepage~of~\pageref{LastPage}}
+    \renewcommand{\footrulewidth}{0.1pt}
+  }
+  \pagestyle{fancy}
+  \fancyhf{}
+  \lhead{\docauthor}
+  \rhead{\doctitle}
+  \cfoot{Page~\thepage~of~\pageref{LastPage}}
+  \renewcommand{\headrulewidth}{0.1pt}
+  \renewcommand{\footrulewidth}{0.1pt}
+
+  % Tables
+  \newcolumntype{x}[1]{>{\centering\arraybackslash\hspace{0pt}}p{#1}}
+
+  % Bibliography
+  \renewcommand{\refname}{\selectfont\normalsize References} 
+
+  \title{\doctitle}
+  \author{\docauthor}
+  \date{}
+
+\begin{document}
+  
+\maketitle
+
+\noindent
+These are the instructions for completing the assessments for this module using git~\cite{git}.
+\subsection*{Why we are using git?}
+  \begin{itemize}
+    \item It is the industry standard for tracking the development of code, text, and software.
+    \item It enables students to demonstrate consistency in their work.
+    \item It provides evidence that a student's work is their own.
+  \end{itemize}
+
+  \subsection*{How do I submit my assessments?}
+  \begin{itemize}
+    \item Each assessment should be in a single git repository and regularly synced with a hosting platform like GitHub~\cite{github}.
+    \item The URL for the online repository should be submitted using the form on the Moodle page.
+    \item The URL must be accessible by the lecturer. If it is not publicly available, the lecturer must be added as a collaborator.
+    \item Your last commit synced to the online hosting platform before the assessment deadline will form your submission.
+    \item Once you are given an assessment, you should immediately create the repository and submit its URL. There is no benefit in delaying.
+  \end{itemize}
+
+  \subsection*{Can you give me a quick overview?}
+  \begin{itemize}
+    \item Imagine I give you a PDF describing the requirements of a project to be completed within the next six weeks.
+    \item You should go to GitHub, create a new repository for the project with a descriptive name under your own account. When you create the repository, copy its URL from the location bar of your web browser.
+    \item Go to the Moodle page and click the link for the project submission form. Paste your URL into the form and click Submit.
+    \item Clone the repository to your computer and think about a realistic plan to break your project into reasonable commits, maybe three or four each week.
+  \end{itemize}
+
+  \subsection*{What is a reasonable commit?}
+  \begin{itemize}
+    \item There is no perfect commit, but there are plenty of bad ones. It helps to imagine you are working on the repository as part of a team.
+    \item A good commit does not change many different files. This could cause conflicts for you and other team members working on the same files.
+    \item Likewise, making lot of small commits in quick succession will annoy your teammates. For instance, you should bunch README typo fixes into one commit.
+    \item A reasonable commit might be a well-commented function to calculate the factorial of a number or an important bug fix like changing an erroneous ``\texttt{=}'' to ``\texttt{==}''.
+  \end{itemize}
+
+  \subsection*{Any advice from past submissions?}
+    \begin{itemize}
+      \item Go easy on yourself but do the work.
+      \item Everyone is susceptible to procrastination and disorganisation.  You are expected to be aware of this and take reasonable measures to avoid them.
+      \item Using work from outside sources is acceptable so long as you clearly reference the source and the overall submission is substantially your own work.
+      \item You must be able to explain your project during and after its completion. Our academic policies relating to plagiarism and conduct are available on the website~\cite{gmitqaf}. 
+      \item Unpreventable problems sometimes arise. It really helps if you can demonstrate that, up until that point, you had completed a proportionate amount of work.
+
+  \end{itemize}
+
+
+  \bibliographystyle{plain}
+  \bibliography{bibliography}
+\end{document}
